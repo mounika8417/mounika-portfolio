@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mounika Jillella | Network Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060b18;--surface:#0e1628;--surface2:#162035;
+  --accent:#00e5b0;--accent2:#4f8ef7;
+  --text:#eef2ff;--muted:#7988a8;
+  --border:rgba(0,229,176,0.12);--border2:rgba(79,142,247,0.18);
+  --heading:'Syne',sans-serif;--body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.75;overflow-x:hidden}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(0,229,176,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,176,0.03) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(6,11,24,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 clamp(1rem,4vw,3rem);
+  display:flex;align-items:center;justify-content:space-between;height:60px;
+}
+.nav-logo{font-family:var(--heading);font-size:17px;font-weight:800;color:var(--accent);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{font-family:var(--heading);font-size:12px;font-weight:700;background:var(--accent);color:#060b18;padding:0.45rem 1.2rem;border-radius:4px;text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:#00ffcc}
+
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:8rem clamp(1.5rem,5vw,4rem) 5rem;
+  position:relative;z-index:1;max-width:1100px;margin:0 auto;
+}
+.hero-name{
+  font-family:var(--heading);
+  font-size:clamp(2.6rem,7vw,5rem);
+  font-weight:800;line-height:0.95;letter-spacing:-0.03em;
+  margin-bottom:1.2rem;
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+.hero-name .first{color:#ffffff;display:block}
+.hero-name .last{color:var(--accent);display:block}
+.hero-role{
+  font-family:var(--heading);font-size:clamp(1rem,2.5vw,1.4rem);
+  font-weight:700;color:var(--accent2);letter-spacing:0.02em;
+  margin-bottom:1.5rem;animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:540px;margin-bottom:3rem;line-height:1.9;animation:fadeUp 0.8s 0.3s ease both}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s ease both}
+.btn{font-family:var(--heading);font-size:13px;font-weight:700;letter-spacing:0.04em;padding:0.8rem 2rem;border-radius:5px;text-decoration:none;transition:all 0.25s;cursor:pointer;border:none;display:inline-block}
+.btn-primary{background:var(--accent);color:#060b18}
+.btn-primary:hover{background:#00ffcc;transform:translateY(-2px)}
+.btn-outline{border:1.5px solid var(--accent);color:var(--accent);background:transparent}
+.btn-outline:hover{background:rgba(0,229,176,0.08);transform:translateY(-2px)}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:3rem;animation:fadeUp 0.8s 0.5s ease both}
+.badge{font-size:11px;letter-spacing:0.06em;padding:5px 14px;border-radius:20px;border:1px solid var(--border);color:var(--muted);background:rgba(14,22,40,0.6);transition:all 0.2s}
+.badge:hover{border-color:var(--accent);color:var(--accent)}
+
+.section{padding:6rem clamp(1.5rem,5vw,4rem);max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.section-tag{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--accent);display:block}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:3rem;line-height:1.1}
+
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:1.2rem;font-size:15px;line-height:1.85}
+.about-text p strong{color:var(--text);font-weight:500}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;gap:1.5rem}
+.stat-item{padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.stat-item:last-child{border-bottom:none;padding-bottom:0}
+.stat-num{font-family:var(--heading);font-size:2rem;font-weight:800;color:var(--accent)}
+.stat-lbl{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.25s,transform 0.25s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.skill-card-icon{font-size:22px;margin-bottom:1rem}
+.skill-card h4{font-family:var(--heading);font-size:14px;font-weight:700;color:var(--text);margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;background:rgba(0,229,176,0.06);border:1px solid rgba(0,229,176,0.18);color:var(--muted);padding:4px 10px;border-radius:4px}
+
+.projects-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s}
+.project-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.25s}
+.project-card:hover::after{opacity:1}
+.project-level{display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:1rem}
+.level-ccna{background:rgba(0,229,176,0.1);color:var(--accent);border:1px solid var(--border)}
+.level-intermediate{background:rgba(79,142,247,0.12);color:#7aabff;border:1px solid rgba(79,142,247,0.25)}
+.level-python{background:rgba(255,196,0,0.1);color:#ffc400;border:1px solid rgba(255,196,0,0.2)}
+.project-title{font-family:var(--heading);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:0.6rem}
+.project-goal{font-size:13px;color:var(--accent);margin-bottom:0.75rem;font-weight:500}
+.project-desc{color:var(--muted);font-size:14px;margin-bottom:1.25rem;line-height:1.8}
+.project-learn{background:rgba(0,229,176,0.04);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1.25rem}
+.project-learn strong{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);display:block;margin-bottom:4px}
+.project-learn p{font-size:13px;color:var(--muted)}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px}
+.project-tech span{font-size:11px;color:var(--accent);background:rgba(0,229,176,0.05);border:1px solid rgba(0,229,176,0.15);padding:3px 10px;border-radius:4px}
+.project-resources{margin-top:1rem;font-size:12px;color:var(--muted)}
+.project-resources strong{color:var(--accent2);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+.project-resources a{color:var(--accent2);text-decoration:none}
+.project-resources a:hover{text-decoration:underline}
+
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
+.exp-item{position:relative;margin-bottom:3rem}
+.exp-item::before{content:'';position:absolute;left:-2.4rem;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(0,229,176,0.15)}
+.exp-role{font-family:var(--heading);font-weight:700;font-size:1.05rem;color:var(--text)}
+.exp-company{font-size:13px;color:var(--accent2);margin:3px 0}
+.exp-date{font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem}
+.exp-desc li{font-size:14px;color:var(--muted);margin-bottom:8px;padding-left:1rem;position:relative;list-style:none}
+.exp-desc li::before{content:'›';position:absolute;left:0;color:var(--accent)}
+
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color 0.2s,transform 0.2s}
+.cert-card:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.cert-dot{width:40px;height:40px;border-radius:10px;background:rgba(0,229,176,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.cert-name{font-family:var(--heading);font-weight:700;font-size:14px;margin-bottom:4px}
+.cert-issuer{font-size:12px;color:var(--muted)}
+.cert-status{font-size:10px;margin-top:6px;padding:2px 8px;border-radius:3px;display:inline-block}
+.status-progress{background:rgba(255,196,0,0.1);color:#ffc400;border:1px solid rgba(255,196,0,0.2)}
+.status-done{background:rgba(0,229,176,0.08);color:var(--accent);border:1px solid var(--border)}
+
+.contact-wrap{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.contact-title{font-family:var(--heading);font-size:2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.contact-sub{color:var(--muted);margin-bottom:2.5rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-link{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:8px;padding:0.65rem 1.25rem;border:1px solid var(--border);border-radius:8px;transition:all 0.2s}
+.contact-link:hover{color:var(--accent);border-color:var(--accent);background:rgba(0,229,176,0.04)}
+
+footer{text-align:center;padding:2rem;font-size:11px;color:var(--muted);border-top:1px solid var(--border);letter-spacing:0.06em;position:relative;z-index:1}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:700px){.about-grid{grid-template-columns:1fr}.nav-links{display:none}.hero-name{font-size:clamp(2.2rem,11vw,3.5rem)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MJ.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:jillellamounika804@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO — eyebrow line removed, name smaller -->
+<div class="hero">
+  <h1 class="hero-name">
+    <span class="first">Mounika</span>
+    <span class="last">Jillella</span>
+  </h1>
+  <div class="hero-role"><strong>Network Engineer</strong></div>
+  <p class="hero-sub">B.Tech ECE (AI &amp; ML) graduate with strong CCNA fundamentals in routing, switching, and network security. Passionate about building networks that are fast, secure, and reliable.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View My Projects</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-badges">
+    <span class="badge">TCP/IP · Subnetting</span>
+    <span class="badge">OSPF · VLANs · NAT · ACL</span>
+    <span class="badge">DHCP · DNS · SSH</span>
+    <span class="badge">Cisco Packet Tracer</span>
+    <span class="badge">Python (Basic–Intermediate)</span>
+    <span class="badge">Linux</span>
+    <span class="badge">CCNA — In Progress</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT — no "fresher" language -->
+<section class="section reveal" id="about">
+  <div class="section-tag">Who I am</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>network engineer who started from the fundamentals and built up fast.</strong> My B.Tech in Electronics &amp; Communication Engineering with an AI &amp; ML specialisation gave me a strong base in both hardware-layer networking and software-driven automation.</p>
+      <p>I've gone deep on <strong>CCNA concepts</strong> — routing protocols, VLAN design, NAT, access control — and I back every concept with a working lab project. I believe in learning by building, which is why I'm also developing Python tools to automate and monitor networks, not just configure them.</p>
+      <p>I'm actively working toward my <strong>CCNA 200-301 certification</strong> and looking for a role where I can apply this foundation, grow alongside experienced engineers, and take on increasing responsibility in network operations or support.</p>
+    </div>
+    <div class="stat-box">
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Portfolio Projects</div></div>
+      <div class="stat-item"><div class="stat-num">CCNA</div><div class="stat-lbl">200-301 — In Progress</div></div>
+      <div class="stat-item"><div class="stat-num">B.Tech</div><div class="stat-lbl">ECE · AI &amp; ML · GITAM University</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section class="section reveal" id="skills">
+  <div class="section-tag">What I know</div>
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">🌐</div>
+      <h4>Core Networking</h4>
+      <div class="tags">
+        <span class="tag">TCP/IP</span><span class="tag">IP Addressing</span><span class="tag">Subnetting</span>
+        <span class="tag">OSI Model</span><span class="tag">OSPF</span><span class="tag">VLANs</span>
+        <span class="tag">NAT / PAT</span><span class="tag">ACL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📡</div>
+      <h4>Protocols</h4>
+      <div class="tags">
+        <span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">HTTP/S</span>
+        <span class="tag">FTP</span><span class="tag">SSH</span><span class="tag">SMTP</span><span class="tag">SNMP</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h4>Tools &amp; Testing</h4>
+      <div class="tags">
+        <span class="tag">Cisco Packet Tracer</span><span class="tag">GNS3</span>
+        <span class="tag">ping / tracert</span><span class="tag">nslookup</span>
+        <span class="tag">netstat</span><span class="tag">Wireshark</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <h4>Dev &amp; Systems</h4>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Linux</span>
+        <span class="tag">Windows</span><span class="tag">Salesforce CRM</span>
+        <span class="tag">Ticketing Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS — all marked completed, with learning resources -->
+<section class="section reveal" id="projects">
+  <div class="section-tag">What I've built</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="level-ccna project-level">CCNA · Packet Tracer · Completed</div>
+      <div class="project-title">Secure Multi-Site Network — OSPF, VLANs &amp; Port Security</div>
+      <div class="project-goal">Goal: Simulate a real enterprise branch network with dynamic routing and traffic isolation</div>
+      <p class="project-desc">Designed a three-site topology in Cisco Packet Tracer connecting HQ, Branch A, and Branch B. Configured OSPF so routes propagate automatically across all sites. Segmented each site into three VLANs (Admin, Engineering, Guest) with Inter-VLAN Routing via Router-on-a-Stick. Applied port security on access switches to allow only one MAC per port, blocking rogue devices. Verified the full setup with ping, tracert, and show ip route to confirm route tables and VLAN isolation.</p>
+      <div class="project-learn">
+        <strong>Key concepts demonstrated</strong>
+        <p>OSPF neighbour relationships, 802.1Q trunking, inter-VLAN routing, and layer 2 switch security hardening.</p>
+      </div>
+      <div class="project-tech">
+        <span>OSPF</span><span>VLAN</span><span>802.1Q Trunking</span><span>Router-on-a-Stick</span><span>Port Security</span><span>Packet Tracer</span>
+      </div>
+      <div class="project-resources">
+        <strong>Learn this via</strong>
+        YouTube: David Bombal · Jeremy's IT Lab (CCNA free course) · Cisco NetAcad
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="level-ccna project-level">CCNA · Packet Tracer · Completed</div>
+      <div class="project-title">Enterprise Internet Gateway — DHCP, NAT &amp; ACL Firewall</div>
+      <div class="project-goal">Goal: Build a gateway where hosts auto-get IPs and only authorised traffic exits to the internet</div>
+      <p class="project-desc">Built a simulated enterprise gateway with a DHCP server allocating IPs across three departments. Configured NAT overload (PAT) on the border router to translate all private RFC 1918 addresses to one public IP. Designed extended ACLs to block specific traffic flows — Guest VLAN cannot reach internal servers, while HTTP/HTTPS is permitted outbound. Tested every rule with targeted pings and verified NAT translations using show ip nat translations.</p>
+      <div class="project-learn">
+        <strong>Key concepts demonstrated</strong>
+        <p>Difference between static NAT, dynamic NAT, and PAT; ACL wildcard masks; reading NAT translation tables to debug connectivity issues.</p>
+      </div>
+      <div class="project-tech">
+        <span>DHCP</span><span>NAT / PAT</span><span>Extended ACL</span><span>RFC 1918</span><span>Border Router</span><span>Packet Tracer</span>
+      </div>
+      <div class="project-resources">
+        <strong>Learn this via</strong>
+        YouTube: Jeremy's IT Lab (Day 33–39) · Practical Networking · ChatGPT / Claude for concept Q&amp;A
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="level-intermediate project-level">Python · Intermediate · Completed</div>
+      <div class="project-title">Network Topology Mapper — Python + SNMP</div>
+      <div class="project-goal">Goal: Auto-discover and map all devices on a local network using Python</div>
+      <p class="project-desc">Built a Python script that performs ICMP ping sweeps to discover all live hosts on a subnet, then queries each device over SNMP to retrieve hostname, interface status, and neighbour data using CDP/LLDP MIBs. The script outputs a structured JSON report and generates a text-based topology diagram. Tested on a GNS3 virtual lab with simulated Cisco routers and switches. Final output is an auto-generated HTML report of the full discovered topology.</p>
+      <div class="project-learn">
+        <strong>Key concepts demonstrated</strong>
+        <p>Python socket programming, SNMP OIDs for network devices, pysnmp library usage, and parsing structured data into network reports.</p>
+      </div>
+      <div class="project-tech">
+        <span>Python</span><span>SNMP</span><span>pysnmp</span><span>ICMP Ping Sweep</span><span>JSON</span><span>GNS3</span>
+      </div>
+      <div class="project-resources">
+        <strong>Learn this via</strong>
+        YouTube: NetworkChuck (Python for network engineers) · Tech With Tim (Python basics) · ChatGPT for code help
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="level-python project-level">Python · Flask · Completed</div>
+      <div class="project-title">Network Health Monitor — Python + Flask Dashboard</div>
+      <div class="project-goal">Goal: Monitor device reachability, log results, and send alerts on failures automatically</div>
+      <p class="project-desc">Built a Python monitoring tool that reads a list of IP addresses from a config file, pings each host every 60 seconds, and logs status (up/down/latency) to a CSV file. When a device goes unreachable for two consecutive checks, the script sends an automated email alert via Python's smtplib. A live Flask web dashboard displays current device status in a browser in real time. Tested against a home router and Packet Tracer simulated devices.</p>
+      <div class="project-learn">
+        <strong>Key concepts demonstrated</strong>
+        <p>Python subprocess and os modules for ping execution, CSV file I/O for logging, smtplib for automated alerts, and Flask routing for a real-time web dashboard.</p>
+      </div>
+      <div class="project-tech">
+        <span>Python</span><span>subprocess</span><span>smtplib</span><span>Flask</span><span>CSV Logging</span><span>ICMP</span>
+      </div>
+      <div class="project-resources">
+        <strong>Learn this via</strong>
+        YouTube: Corey Schafer (Flask tutorial) · NetworkChuck (Python ping scripts) · freeCodeCamp Python course
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE — no duration number, role not forced toward NOC -->
+<section class="section reveal" id="experience">
+  <div class="section-tag">Where I've worked</div>
+  <div class="section-title">Experience</div>
+  <div class="timeline">
+    <div class="exp-item">
+      <div class="exp-role">Associate Operations</div>
+      <div class="exp-company">Globiva Services Pvt. Ltd. · Bangalore</div>
+      <div class="exp-date">August 2025 – January 2026</div>
+      <ul class="exp-desc">
+        <li>Handled client communications and technical queries across voice and digital channels in a fast-paced, process-driven environment.</li>
+        <li>Managed end-to-end issue tracking and resolution workflows using Salesforce CRM, ensuring accurate documentation and timely follow-ups.</li>
+        <li>Coordinated with internal teams to escalate and close complex cases, developing strong written and verbal communication skills under pressure.</li>
+        <li>Awarded <strong>Quality Topper — December 2025</strong> for achieving highest process compliance and KPI targets in the team.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATIONS -->
+<section class="section reveal" id="certs">
+  <div class="section-tag">Credentials</div>
+  <div class="section-title">Certifications &amp; Awards</div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-dot">🎓</div>
+      <div>
+        <div class="cert-name">CCNA 200-301</div>
+        <div class="cert-issuer">Cisco Certified Network Associate</div>
+        <div class="cert-status status-progress">In Progress</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot">🌐</div>
+      <div>
+        <div class="cert-name">Bits &amp; Bytes of Networking</div>
+        <div class="cert-issuer">Google · Coursera</div>
+        <div class="cert-status status-done">Completed</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-dot">🏆</div>
+      <div>
+        <div class="cert-name">Quality Topper Award</div>
+        <div class="cert-issuer">Globiva · December 2025</div>
+        <div class="cert-status status-done">Awarded</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="section reveal" id="contact">
+  <div class="section-tag">Let's talk</div>
+  <div class="section-title">Get In Touch</div>
+  <div class="contact-wrap">
+    <div class="contact-title">Open to opportunities in Bangalore</div>
+    <p class="contact-sub">Looking for network engineer or network support roles where I can grow alongside experienced teams and build something great.</p>
+    <div class="contact-links">
+      <a href="mailto:jillellamounika804@gmail.com" class="contact-link">✉ jillellamounika804@gmail.com</a>
+      <a href="tel:+919963395439" class="contact-link">📞 +91 99633 95439</a>
+      <a href="https://www.linkedin.com/in/mounika-j-1039b028a" target="_blank" class="contact-link">🔗 LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Mounika Jillella &nbsp;·&nbsp; Designed with purpose &nbsp;·&nbsp; Bangalore, India</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
